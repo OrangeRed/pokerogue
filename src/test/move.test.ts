@@ -1,14 +1,14 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { Moves } from "./enums/moves";
+import { Moves } from "../data/enums/moves";
 import Move, {
   FlinchAttr,
   MoveTarget,
   PlantHealAttr,
   StatusMove,
   WeatherChangeAttr,
-} from "./move";
-import { Type } from "./type";
-import { WeatherType } from "./weather";
+} from "../data/move";
+import { Type } from "../data/type";
+import { WeatherType } from "../data/weather";
 
 describe("move", () => {
   let move: Move;

@@ -5,10 +5,10 @@ import {
   IgnoreOpponentEvasionAbAttr,
   StatusEffectImmunityAbAttr,
   SuppressWeatherEffectAbAttr
-} from "./ability";
-import { Abilities } from "./enums/abilities";
-import { BattlerTagType } from "./enums/battler-tag-type";
-import { StatusEffect } from "./status-effect";
+} from "../data/ability";
+import { Abilities } from "../data/enums/abilities";
+import { BattlerTagType } from "../data/enums/battler-tag-type";
+import { StatusEffect } from "../data/status-effect";
 
 describe("ability", () => {
   let ability: Ability;
