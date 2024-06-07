@@ -4,7 +4,7 @@ on:
     types: [opened, edited, synchronize, reopened]
 
 jobs:
-  title-check:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -13,9 +13,9 @@ jobs:
         with:
           node-version: 20
 
-      - run: npm ci @actions/core @actions/github 
+      - run: npm i --no-save @actions/core @actions/github tsx
 
       - name: Lint PR
         run: npx tsx ./.github/scripts/pr-title.ts
-        with:
-          github_token: ${{ github.token }}
+        env:
+          INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

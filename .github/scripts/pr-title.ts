@@ -1,8 +1,6 @@
 import * as core from "@actions/core";
 import * as github from "@actions/github";
 
-const REGEX = "^[a-zA-Z]+(([a-zA-Z]+))?: .+";
-
 const PREFIXES = ["ability", "balance", "bug", "docs", "feature", "item", "localize", "move", "other"] as const;
 
 const LOCALES = ["es", "fr", "de", "it", "zh_CN", "zh_TW", "pt_BR", "ko"];
@@ -32,7 +30,7 @@ async function run() {
 
     const title = pullRequest.title;
     // const title = "poop(asd): asdasdasd";
-    core.info(`Pull Request title: "${title}"\n`);
+    core.info(`Pull Request title: "${title}"`);
 
 
 
@@ -44,13 +42,12 @@ Terminology: feat(ui): Add new feature
              |____________ Prefix
 `;
 
-    core.info(info.trim() + "\n");
+    core.info(info.trim());
 
     // Check if title pass regex
-    // '^[a-zA-Z]+(\([a-zA-Z]+\))?: .+'
     const regex = RegExp(/^[a-zA-Z]+(\([a-zA-Z]+\))?: .+/);
     if (!regex.test(title)) {
-      core.setFailed(`Pull Request title "${title}" failed to pass match regex - ${regex}`);
+      core.setFailed(`Pull Request title "${title}" failed to match - 'Prefix(Scrope): Subject'`);
       return;
     }
 
